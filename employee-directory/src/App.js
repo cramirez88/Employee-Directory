@@ -7,7 +7,9 @@ import API from './utils/API'
 class  App extends Component {
    state ={
      employees: [],
-     search: ''
+     search: '',
+     filteredEmployees: [],
+     isSorted: false
 
    }
 
@@ -26,6 +28,11 @@ class  App extends Component {
      })
 
       console.log(value)
+
+      const filtered = this.state.employees.filter((employee)=>{
+          return (employee.name.first.toLowerCase().indexOf(event.target.value.toLowerCase()) !== -1);
+      })
+      this.setState({ filteredEmployees: filtered }) 
    }
 
   render(){
